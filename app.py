@@ -61,8 +61,8 @@ st.markdown("""
         padding-top: 1rem;
     }
     .sidebar-profile img {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
         border: 4px solid #1877f2;
         margin-bottom: 0.5rem;
