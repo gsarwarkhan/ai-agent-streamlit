@@ -225,9 +225,10 @@ if prompt := st.chat_input("How can I help you today?"):
 st.markdown("""
 <div class="footer">
     🤖 Powered by Google Gemini AI | 👨‍💻 Created by Ghulam Sarwar Khan<br>
-    <a href="https://www.linkedin.com/in/gsarwarkhan/" target="_blank">LinkedIn</a> |
-    <a href="https://www.facebook.com/gsarwarkhan" target="_blank">Facebook</a> |
-    <a href="https://github.com/gsarwarkhan/ai-agent-streamlit" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/ghulam-sarwar-khan-b989b48a/" target="_blank">LinkedIn</a> |
+    <a href="https://www.facebook.com/sarwaronline" target="_blank">Facebook</a> |
+    <a href="https://www.youtube.com/channel/UC1cipUgPINuc-XFgtJCb30g" target="_blank">YouTube</a> |
+    <a href="https://github.com/gsarwarkhan" target="_blank">GitHub</a>
 </div>
 """, unsafe_allow_html=True)
 
