@@ -64,7 +64,7 @@ st.markdown("""
         width: 80px;
         height: 80px;
         border-radius: 50%;
-        border: 8px solid red; /* <-- Aggressive change for debugging */
+        border: 4px solid #1877f2;
         margin-bottom: 0.5rem;
     }
     .sidebar-profile .name {
@@ -197,19 +197,20 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # --- Display existing messages ---
-user_avatar_b64 = get_image_as_base64("user_avatar.png") # Optional: provide a path to a generic user icon
 for message in st.session_state.messages:
-    avatar = profile_pic_b64 if message["role"] == "bot" else user_avatar_b64
-    with st.chat_message(message["role"], avatar=avatar):
+    role = message["role"]
+    # Use the file path for the bot avatar, and an emoji for the user.
+    avatar_img = "GSK Profile Pic.jpeg" if role == "bot" else "🧑‍💻"
+    with st.chat_message(role, avatar=avatar_img):
         st.markdown(message["content"])
 
 # --- Handle new user input ---
 if prompt := st.chat_input("How can I help you today?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user", avatar=user_avatar_b64):
+    with st.chat_message("user", avatar="🧑‍💻"):
         st.markdown(prompt)
 
-    with st.chat_message("bot", avatar=profile_pic_b64):
+    with st.chat_message("bot", avatar="GSK Profile Pic.jpeg"):
         with st.spinner("🤔 Thinking..."):
             try:
                 model = genai.GenerativeModel(MODELS[selected_model_name])
