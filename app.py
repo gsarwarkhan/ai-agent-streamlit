@@ -64,7 +64,7 @@ st.markdown("""
         width: 80px;
         height: 80px;
         border-radius: 50%;
-        border: 4px solid #1877f2;
+        border: 8px solid red; /* <-- Aggressive change for debugging */
         margin-bottom: 0.5rem;
     }
     .sidebar-profile .name {
