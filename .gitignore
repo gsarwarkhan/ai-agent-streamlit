@@ -1,21 +1,6 @@
-# 🔒 Secrets
 .env
-service_account.json
-
-# 🐍 Python cache & environment
-__pycache__/
-*.py[cod]
 venv/
-
-# 📝 Logs
 logs/
-*.log
-
-# 💻 Editor settings (optional but recommended)
-.vscode/
-.idea/
-
-# 📦 JSON files — ignore all except specific ones
-*.json
-!README.json
-!package-lock.json
+service_account.json
+*.pyc
+__pycache__/

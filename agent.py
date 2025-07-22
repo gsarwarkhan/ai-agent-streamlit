@@ -6,16 +6,17 @@ import google.generativeai as genai
 dotenv_path = os.path.join(os.getcwd(), '.env')
 load_dotenv(dotenv_path=dotenv_path)
 
-api_key = os.getenv("GOOGLE_API_KEY")
+# Load the correct environment variable
+api_key = os.getenv("GEMINI_API_KEY")  # ✅ Make sure your .env has GEMINI_API_KEY, not GOOGLE_API_KEY
 
 if not api_key:
-    print("❌ ERROR: API key not found in .env file.")
+    print("❌ ERROR: GEMINI_API_KEY not found in .env file.")
     exit()
 
 # Configure Gemini API
 genai.configure(api_key=api_key)
 
-# Define free generative models and their descriptions
+# Define models and descriptions
 MODELS = [
     {
         'name': 'models/gemini-1.5-pro-latest',
@@ -43,8 +44,13 @@ MODELS = [
     },
 ]
 
-# Features/help text
-HELP_TEXT = '''\nFeatures:\n- Chat with Gemini or Gemma models\n- Switch models at any time with: /model\n- List available models: /models\n- Show this help: /help\n- Exit: exit\n'''
+HELP_TEXT = '''\nFeatures:
+- Chat with Gemini or Gemma models
+- Switch models at any time with: /model
+- List available models: /models
+- Show this help: /help
+- Exit: exit
+'''
 
 def print_models():
     print("\nAvailable models:")
@@ -59,15 +65,18 @@ def select_model():
         if choice.isdigit() and 1 <= int(choice) <= len(MODELS):
             return MODELS[int(choice)-1]['name']
         else:
-            print("Invalid choice. Please enter a number from the list.")
+            print("❌ Invalid choice. Enter a valid number.")
 
-# Start with Gemma 3 4B IT as default model
+# Start with a default model
 current_model_name = 'models/gemma-3-4b-it'
 model = genai.GenerativeModel(current_model_name)
-print(f"🔮 Gemini Agent Ready. Using: {current_model_name}\nType '/help' for features, '/model' to switch models, or 'exit' to quit.")
+
+print(f"🔮 Gemini Agent Ready. Using: {current_model_name}")
+print("Type '/help' for features, '/model' to switch models, or 'exit' to quit.")
 
 while True:
     prompt = input("You: ").strip()
+
     if prompt.lower() == "exit":
         print("👋 Exiting Gemini Agent. Goodbye!")
         break
@@ -83,6 +92,7 @@ while True:
         current_model_name = new_model_name
         print(f"✅ Switched to: {current_model_name}")
         continue
+
     try:
         response = model.generate_content(prompt)
         print("Gemini:", response.text)
