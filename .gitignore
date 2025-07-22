@@ -1,7 +1,23 @@
+# Hide secrets
 .env
-venv/
-__pycache__/
-*.pyc
-logs/
 service_account.json
+
+# Python cache & environment
+__pycache__/
+*.py[cod]
+venv/
+
+# Logs
+logs/
+*.log
+
+# Ignore VSCode or other editor settings (optional)
+.vscode/
+.idea/
+
+# Optional: ignore all JSONs except specific ones
+# If you want to keep package-lock.json but ignore service account
+# Then do this instead of *.json
+!package-lock.json
 *.json
+!README.json  # add exceptions as needed
